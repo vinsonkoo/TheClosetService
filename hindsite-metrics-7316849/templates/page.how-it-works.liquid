@@ -1,0 +1,93 @@
+<div class="grid">
+
+  <div class="grid-item large--three-quarters push--large--one-eighth">
+
+    <header class="page-header how_it_works_header grid-item large--two-thirds push--large--one-sixth medium--two-thirds push--medium--one-sixth text-center remove_padding">
+      <h2 class=""> {{ page.title }} | Picking Your Dress</h2>
+      {{ 'box_pattern.png' | asset_url | img_tag }}
+    </header>
+
+    {% comment %}
+      Regular page content goes here.
+    {% endcomment %}
+
+    <div class="grid-item remove_padding large--seven-tenths medium--two-thirds">
+
+      <div class="text-center" style="text-align: left;">
+        <a href="/collections/all">
+        {{ 'closetservice_how_it_works graph.png' | asset_url | img_tag }}
+        </a>
+      </div>
+      <h5 class="how_it_works_steps grid-item large--one-quarter medium--one-quarter text-center">RESERVE</h5>
+      <ul class="disc grid-item large--one-whole how_it_works">
+        <li>
+          Select the dress that you want for your night out.
+        </li>
+        <li>
+          Each rental lasts for <strong>3</strong> days. Reserve a day before the arrival date.
+        </li>
+      </ul>
+      <h5 class="how_it_works_steps grid-item large--one-quarter medium--one-quarter text-center">RENT</h5>
+      <ul class="disc grid-item large--one-whole how_it_works">
+        <li>
+          Choose your dress size and the rental date.
+        </li>
+        <li>
+          Add dress to garment bag.
+        </li>
+        <li>
+          Check out and purchase rental.
+        </li>
+        <li>
+          Arrival by 8PM, before the 1st of the 3-day rental.
+        </li>
+      </ul>
+      <h5 class="how_it_works_steps grid-item large--one-quarter medium--one-quarter text-center">RETURN</h5>
+      <ul class="disc grid-item large--one-whole how_it_works">
+        <li>
+          After your fabulous night out, return the rental in your prepaid envelope at your nearest <a href="www.ups.com/dropoff?loc=en_US">UPS dropbox</a> on your return date.
+        </li>
+        <li>
+          Send us pictures! We would love to feature you on our blog and Instagram feed.
+        </li>
+        <li>
+          And don't worry about dry cleaning! It's FREE!!!
+        </li>
+      </ul>
+    </div>
+
+
+    <div class="grid-item large--three-tenths medium--one-third text-center">
+      <div class="grid-item remove_padding">
+        {% include 'booking-availability-how-it-works' %}
+      </div>
+
+      <div class="grid-item mosaic_strip large--one-half medium--one-half remove_padding">
+        {{ 'mosaic_strip.png' | asset_url | img_tag }}
+      </div>
+
+      <a class="grid-item remove_padding remove_text_dec" href="/pages/faq">
+        <div class="how_it_works_faq">
+          <h1>F<span>requently</span></h1>
+          <h1>A<span>sked</span></h1>
+          <h1>Q<span>uestions</span></h1>
+        </div>
+      </a>
+
+      <div class="grid-item mosaic_strip large--one-half medium--one-half remove_padding">
+        {{ 'mosaic_strip.png' | asset_url | img_tag }}
+      </div>
+      
+      <a class="grid-item remove_padding remove_text_dec" href="/pages/size-chart">
+        <!-- <div class="how_it_works_size_chart text-center">
+          <h1>S<span>izing</span></h1>
+          <h1>C<span>hart</span></h1>
+        </div> -->
+        {{ 'sizing_chart.jpg' | asset_url | img_tag }}
+      </a>
+
+    </div>
+  
+  </div>
+
+</div>

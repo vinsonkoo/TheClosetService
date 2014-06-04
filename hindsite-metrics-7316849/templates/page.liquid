@@ -1,0 +1,48 @@
+<div class="grid">
+
+  {% comment %} If statements for grid size for page {% endcomment %}
+
+  {% if page.title == "Wholesale" %}
+    <div class="grid-item large--four-fifths">
+
+  {% elsif page.title == "The Closet Service Story" %}
+    <div class="grid-item large--five-sixths push--large--one-twelfth">
+
+  {% else %}
+    <div class="grid-item large--three-quarters push--large--one-eighth">
+
+  {% endif %}
+
+    {% comment %} If statements for header {% endcomment %}
+
+    {% if page.title == "Wholesale" %}
+
+    {% elsif page.title == "Rental Agreement" %}
+      
+      <header class="page-header how_it_works_header grid-item large--three-fifths push--large--one-fifth medium--three-fifths push--medium--one-fifth text-center remove_padding">
+        <h2 class=""> {{ page.title }}</h2>
+        {{ 'box_pattern.png' | asset_url | img_tag }}
+      </header>
+
+    {% elsif page.title == 'The Closet Service Story' %}
+
+    {% else %}
+
+      <header class="page-header">
+        <h1 class="text-center grid-item">{{ page.title }}</h1>
+      </header>
+
+    {% endif %}
+
+
+    {% comment %}
+      Regular page content goes here.
+    {% endcomment %}
+
+    <div class="rte">
+      {{ page.content }}
+    </div>
+  
+  </div> {% comment %} Closing div tag from top {% endcomment %}
+
+</div>

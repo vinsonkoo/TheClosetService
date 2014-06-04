@@ -1,0 +1,24 @@
+{% comment %}
+BookThatApp auto installed snippet. Changes made to this file will be lost if installed again.
+{% endcomment %}
+
+{% if product.metafields.bookthatapp.config %}
+{% unless bta_configured %}
+<div class="booking-form">
+    <div class="selector-wrapper">
+	    {% capture attribute %}booking-start{% endcapture %}
+	    {% comment %} label not needed with placeholder value in place
+	    <label for="{{ attribute }}">Select Rental Date:</label>
+	    {% endcomment %}
+	    <input id="{{ attribute }}" type="text" name="properties[{{ attribute }}]" class="datepicker bta required bta-load-enable datepicker_input_product" size="12" data-handle="{{ product.handle }}" data-variant="{{ product.variants.first.id}}" data-bta-product-config="{{ product.metafields.bookthatapp.config }}" data-bta-variant-config="{% for variant in product.variants %}{{ variant.id }}:{{ variant.metafields.bookthatapp.config }}{% unless forloop.last %},{% endunless %}{% endfor %}" disabled="disabled" placeholder="Select Rental Date"/>
+	</div>
+</div>
+
+<script>
+var bta = {
+    productId: {{ product.id }}
+}
+</script>
+{% assign bta_configured = true %}
+{% endunless %}
+{% endif %}
