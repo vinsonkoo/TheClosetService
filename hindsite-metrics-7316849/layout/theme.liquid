@@ -61,26 +61,36 @@
   {% endcomment %}
   {{ '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js' | script_tag }}
 
-  <!-- contentplum's instagram feed -->
+  <!-- contentplum's instagram feed ================================================== -->
   <script type="text/javascript" src="https://www.contentplum.com/js/feeds/code.js"></script>
 
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
   <script src="http://malsup.github.com/jquery.cycle2.js"></script>
 
-    <!-- Google Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Marck+Script' rel='stylesheet' type='text/css'>
+  <!-- CSS and JS for slideshow ================================================== -->
+  {{ 'flexslider.css' | asset_url | stylesheet_tag }}
+  {{ 'jquery.flexslider-min.js' | asset_url | script_tag }}
+  {{ 'jquery.flexslider.js' | asset_url | script_tag }}
+  <script type="text/javascript" charset="utf-8">
+   $(window).load(function() {
+     $('.flexslider').flexslider();
+   });
+  </script>
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ 'favicon.ico' | asset_url }}" type="image/x-icon" />
+  <!-- Google Fonts ================================================== -->
+  <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Marck+Script' rel='stylesheet' type='text/css'>
 
-    <!-- Avgund modal  -->
-    {{ 'avgrund.css' | asset_url | stylesheet_tag }}
-    {{ 'jquery.avgrund.js' | asset_url | script_tag }}
+  <!-- Favicon ================================================== -->
+  <link rel="shortcut icon" href="{{ 'favicon.ico' | asset_url }}" type="image/x-icon" />
 
-    <meta name="google-site-verification" content="aigKP9gxcEIhlNrWVD_6oV1jCTdT7FpQOeB64NQG9QQ" /> 
-    
+  <!-- Avgrund modal  ================================================== -->
+  {{ 'avgrund.css' | asset_url | stylesheet_tag }}
+  {{ 'jquery.avgrund.js' | asset_url | script_tag }}
+
+  <meta name="google-site-verification" content="aigKP9gxcEIhlNrWVD_6oV1jCTdT7FpQOeB64NQG9QQ" /> 
+
 
 </head>
 
