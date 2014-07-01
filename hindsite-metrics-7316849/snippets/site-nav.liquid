@@ -4,8 +4,8 @@
   More info on linklists:
     - http://docs.shopify.com/themes/liquid-variables/linklists
 {% endcomment %}
-
-<ul class="site-nav grid-item remove_padding large--seven-twelfths text-center">
+<div class="grid-item remove_padding site-nav">
+<ul class="site-nav grid-item remove_padding text-center large--four-fifths push--large--one-tenth">
   {% for link in linklists.main-menu.links %}
 
   {% comment %}
@@ -25,8 +25,9 @@
     </ul>
   </li>
   {% else %}
-      <li class="grid-item remove_padding large--one-fifth medium--one-fifth small--one-fifth"><a href="{{ link.url }}">{{ link.title }}</a></li>
+      <li class="grid-item remove_padding large--one-fifth medium--one-fifth small--one-whole"><a href="{{ link.url }}">{{ link.title }}</a></li>
   {% endif %}
   {% endfor %}
   
 </ul>
+</div>

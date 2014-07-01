@@ -1550,11 +1550,6 @@ p.rent_from_closet {
 }
 
 /*HEADER*/
-.header1 {
-  padding: 0 24px;
-  margin-left: 0px;
-}
-
 .site-header .wrapper {
   padding: 0;
 }
@@ -1564,54 +1559,30 @@ p.rent_from_closet {
   padding: 0;
 }
 
-.free_dry_cleaning h5{
-  background: #7a7a7a;
-  color: #fff;
-  margin-top: 0px;
+h5.free_dry_cleaning {
+  color: #7a7a7a;
+  /*margin-top: 0px;*/
   margin-bottom: 0px;
 }
 
-ul.site-nav li a {
-  padding-right: 0px;
-  padding: 0;
-  white-space: normal;
-}
-
-ul.site-nav li {
-  padding-left: 0px;
-}
-
-.header-logo {
-  margin: 0;
-  padding-left: 30px;
-  float: left;
-}
-
-.header-logo img, .header-logo a {
-  display: inline;
-}
-
 .shopping_cart_ul {
-  float: right;
   text-align: right;
-  padding-right: 48px;
+  padding-right: 24px;
   margin-bottom: 0;
 }
 
 .shopping_cart_ul li {
   display: inline;
-  /*float: right;*/
-  color: #ff8aff !important;
   font-size: 16px;
   position: relative;
 }
 
 .shopping_cart_ul a {
   text-decoration: none;
+  color: #ff8aff !important;
 }
 
 .shopping_cart_count {
-  color: #ff8aff !important;
   position: relative;
   text-align: center;
   display: block;
@@ -1623,8 +1594,28 @@ ul.site-nav li {
   text-decoration: none;
 }
 
-.customer {
-  padding-right: 48px;
+.header-logo {
+  text-align: center;
+  margin-top: 0;
+  padding-left: 12px;
+}
+
+.header-logo img {
+  display: inline;
+  position: relative;
+  top: -40px;
+  z-index: 0;
+  margin-bottom: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .header-logo {
+    float: none;
+  }
+}
+
+.customer, #customer_register_link {
+  padding-right: 12px;
 }
 
 .customer, p.customer a {
@@ -1632,31 +1623,44 @@ ul.site-nav li {
   margin-bottom: 0px;
 }
 
+@media screen and (max-width: 768px) {
+  .customer {
+    padding-right: 0;
+  }
+  .shopping_cart_ul {
+    padding-right: 0;
+  }
+}
+
 .nav-bar {
   background: transparent;
 }
 
-.nav-bar ul {
-  /*line-height: 50px;*/
-  margin-top: 40px;
-  margin-left: -30px;
+.site-nav {
+  background: #ffcc00;
+  margin-top: -20px; /* to match header-logo img being pushed up*/
 }
 
-.nav-bar ul li a {
-  color: #000;
-  font-size: 16px
+ul.site-nav li a {
+  padding-right: 0px;
+  padding: 0;
+  white-space: normal;
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 36px;
+}
+
+ul.site-nav li {
+  padding-left: 0px;
 }
 
 @media screen and (max-width: 768px) {
-  ul.site-nav li {
-    padding-left: 0px;
-    line-height: 1em;
-  }
   ul.site-nav li a {
     padding-top: 0px;
     white-space: normal;
   }
-  .nav-bar ul {
+  .nav-bar ul.site-nav {
     margin-left: 0;
     margin-top: 0;
   }
@@ -1668,12 +1672,6 @@ ul.site-nav li {
   }
 }
 
-
-@media screen and (min-width: 769px) and (max-width: 803px) {
-  .nav-bar ul {
-    margin-top: -20px;
-  }
-}
 #cartCount {
   font-size: 16px;
 }
@@ -1692,7 +1690,6 @@ ul.site-nav li {
   background-position: center;
   background-size: contain;
   /*margin: 0 auto;*/
-
 }
 
 @media screen and (max-width: 480px) {
@@ -1710,10 +1707,8 @@ ul.site-nav li {
   }
 }
 
-.browse_dresses {
-  margin-top: 75%;
+a.browse_dresses {
   text-align: center;
-  margin-left: 40%;
   z-index: 2;
   position: relative;
   display: block;
@@ -1728,14 +1723,6 @@ ul.site-nav li {
   font-size: 1em;
   font-weight: bold;
   display: inline-block;
-}
-
-@media screen and (max-width: 768px) {
-  .browse_dresses {
-    margin-top: 60%;
-    margin-bottom: 25%;
-    margin-left: 0;
-  }
 }
 
 .browse_dresses:hover {
@@ -1754,6 +1741,11 @@ ul.site-nav li {
 .rent_dress a {
   text-decoration: underline;
 }
+
+.dress_code {
+  margin-bottom: 20px;
+}
+
 
 span.pick_from_closet {
   color: #bd4bb2;
@@ -1801,6 +1793,21 @@ span.pick_from_closet {
   text-decoration: underline;
 }
 
+.cycle-slideshow {
+  z-index: 1;
+}
+
+.pop_in_form {
+  padding-left: 6px;
+}
+
+.content_for_popin {
+  padding-left: 12px;
+}
+
+.avgrund_modal_title {
+  color: #de2061;
+}
 
 /*INDEX*/
 
@@ -1936,6 +1943,11 @@ input[type="number"] {
 .push_collections_up {
   margin-top: -10em;
 }
+
+.grid-uniform {
+  margin-left: none;
+}
+
 .collections-grid {
   padding-left: 12px;
   position: relative;
@@ -1946,13 +1958,14 @@ input[type="number"] {
   border-bottom: 2px solid #aaa;
   margin: 0; 
   padding: 0;
-  padding-top: 20px;
+  padding-top: 10px;
+  white-space: nowrap;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-@media screen and (min-width: 481px) {
+@media screen and (min-width: 769px) {
   .collections-grid .grid-item:nth-child(3n) {
       border-right: none;
   }
@@ -1962,10 +1975,10 @@ input[type="number"] {
 }
 
 @media screen and (max-width: 768px) {
-  .collections-grid .grid-item:nth-child(3n) {
+  .collections-grid .grid-item:nth-child(2n) {
       border-right: none;
     }
-  .collections-grid .grid-item:nth-last-child(2) ~ .grid-item {
+  .collections-grid .grid-item:nth-last-child(3) ~ .grid-item {
       border-bottom: none;
   }
 }
@@ -2114,12 +2127,6 @@ input[type="number"] {
   border: 2px solid #ff78cc !important;
   text-align: center;
 }
-/*if the dress icon is used for right search form, uncomment out*/
-/*@media screen and (min-width: 481px) and (max-width: 768px) {
-  .datepicker_input, .right_search_button {
-    margin-top: 15%;
-  }
-}*/
 
 .datepicker_input_index {
   border: 2px solid #ff78cc !important;
@@ -2321,6 +2328,8 @@ table.size_chart > th, td {
 }
 
 /*CLOSET STORY*/
+
+
 hr.thick_hr {
   margin: 15px 0;
   border-top: solid #000;
@@ -2333,4 +2342,15 @@ hr.thick_hr {
 
 .remove_text_dec {
   text-decoration: none;
+}
+
+
+/*REGISTER*/
+
+.customer_btn {
+  background: #de2061;
+}
+
+.customer_btn:hover {
+  background: #d7084f;
 }

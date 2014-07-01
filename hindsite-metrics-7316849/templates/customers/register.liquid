@@ -47,9 +47,19 @@
         <input type="password" value="" name="customer[password]" id="create_password" {% if form.errors contains "password" %} class="error"{% endif %}>
       </div>
 
+      <div id="birthday">
+        <label for="birthday">Birthday</label>
+        <input type="text" value="" name="customer[note][Birthday]" id="birthday" placeholder="mm/dd/yyyy" {% if form.errors contains "birthday" %} class="error"{% endif %}>
+      </div>
+
+      <div id="zip_code">
+        <label for="zip_code">Zip Code</label>
+        <input type="text" value="" name="customer[note][Zip Code]" id="zip_code" {% if form.errors contains "zip_code" %} class="error"{% endif %}>
+      </div>
+
       <div class="text-center">
         <p>
-          <input type="submit" value="Create" class="btn">
+          <input type="submit" value="Create" class="btn customer_btn">
         </p>
         or <a href="{{ shop.url }}">Return to Store</a>
       </div>

@@ -5,30 +5,29 @@
   More info on global variables (available on all templates):
     - http://docs.shopify.com/themes/liquid-variables/global
 {% endcomment %}
+<div class="container">
 
-
-<div class="front_page_images grid-item large--five-sixths push--large--one-twelfth">
-
-  <div class="grid-item large--one-third medium--one-half small--one-half side_image">
-    {{ 'eva_chu_model_closet_service_dress_rental_4.png' | asset_url | img_tag }}
-  </div>
-
-  <div class="grid-item large--one-third medium--one-whole small--one-whole remove_padding">
+<div class="grid-item">
+  <div class="grid-item large--three-quarters push--large--one-eighth remove_padding dress_code">
+    
     <a href="/collections/all">
-      <div class="browse_dresses grid-item large--one-half push--large--one-quarter medium--one-third push--medium--two-thirds">
-      Browse Dresses
+      <div class="cycle-slideshow">
+      
+        {{ 'dress1.jpg' | asset_url | img_tag }}
+        {{ 'dress2.jpg' | asset_url | img_tag }}
+        {{ 'dress3.jpg' | asset_url | img_tag }}
+        {{ 'dress4.jpg' | asset_url | img_tag }}
+        {{ 'dress5.jpg' | asset_url | img_tag }}
+        {{ 'dress6.jpg' | asset_url | img_tag }}
+
       </div>
     </a>
-  </div>
-
-  <div class="grid-item large--one-third medium--one-third side_image">
-    {{ 'eva_chu_model_closet_service_dress_rental_grey_shoes.png' | asset_url | img_tag }}
   </div>
 
 </div>
 
 
-<div class="grid-uniform text-center">
+<div class="grid text-center">
 
   <div class="grid-item large--three-fifths"> <!-- column 1 -->
     <div class="grid-item rent_dress">
@@ -55,7 +54,7 @@
 
 
   <div class="grid-item remove_padding large--two-fifths box_icon_1"> <!-- column 2 -->
-    <h4 class="text-center"><a href="/blogs/news">Zipped Up | Dresses n' Culture</a></h4>
+    <h4 class="text-center"><a href="/blogs/news">The Closet Girl | Dresses n' Culture</a></h4>
 
     {% comment %}
       Loop through three recent blog articles with the following code.
@@ -67,7 +66,7 @@
 
     {% for article in blogs['news'].articles limit:2 %}
 
-      <div class="grid-item remove_padding large--one-whole medium--two-fifths push--medium--one-tenth">
+      <div class="grid-item remove_padding large--one-whole medium--one-half">
         {% comment %} Publish date not needed
         <h6>
           <time pubdate datetime="{{ article.published_at | date: '%Y-%m-%d' }}">
@@ -84,7 +83,7 @@
         {% endcomment %}
         <div class="rte">
           {% if article.excerpt.size > 0 %}
-            {{ article.excerpt }}
+            <a href="{{ article.url }}">{{ article.excerpt }}</a>
           {% else %}
             <p>{{ article.content | strip_html | truncatewords: 20 }}</p>
           {% endif %}
@@ -145,4 +144,92 @@
   </div>
 {% endcomment %}
 
+</div> <!-- .container -->
+
+<div class="content_for_popin grid-item">
+  {% layout settings.customer_layout %}
+
+    <div class="grid">
+
+      <div class="grid-item">
+        <h2 class="avgrund_modal_title">THE CLOSET SERVICE</h2>
+        <h4 style="text-align:center">REGISTER NOW FOR 15% OFF YOUR FIRST RENTAL</h4>
+
+
+        {% comment %}
+          This form must use 'create_customer'
+        {% endcomment %}
+        {% form 'create_customer' %}
+
+          {% include 'form-errors-custom' %}
+
+          <div id="first_name" class="grid-item large--one-half medium--one-half small--one-half pop_in_form">
+            <label for="first_name">First Name</label>
+            <input type="text" value="" name="customer[first_name]" id="first_name" {% if form.errors contains "first_name" %} class="error"{% endif %}>
+          </div>
+
+          <div id="last_name" class="grid-item large--one-half medium--one-half small--one-half pop_in_form">
+            <label for="last_name">Last Name</label>
+            <input type="text" value="" name="customer[last_name]" id="last_name" {% if form.errors contains "last_name" %} class="error"{% endif %}>
+          </div>
+
+          <div id="email" class="grid-item large--one-half medium--one-half small--one-half pop_in_form">
+            <label for="email">Email Address</label>
+            <input type="email" value="" name="customer[email]" id="email" placeholder="your-email@shopify.com" {% if form.errors contains "email" %} class="error"{% endif %}>
+          </div>
+
+          <div id="create_password" class="grid-item large--one-half medium--one-half small--one-half pop_in_form">
+            <label for="password">Password</label>
+            <input type="password" value="" name="customer[password]" id="create_password" {% if form.errors contains "password" %} class="error"{% endif %}>
+          </div>
+
+          <div id="birthday" class="grid-item large--one-half medium--one-half small--one-half pop_in_form">
+            <label for="birthday">Birthday</label>
+            <input type="text" value="" name="customer[note][Birthday]" id="birthday" placeholder="mm/dd/yyyy" {% if form.errors contains "birthday" %} class="error"{% endif %}>
+          </div>
+
+          <div id="zip_code" class="grid-item large--one-half medium--one-half small--one-half pop_in_form">
+            <label for="zip_code">Zip Code</label>
+            <input type="text" value="" name="customer[note][Zip Code]" id="zip_code" {% if form.errors contains "zip_code" %} class="error"{% endif %}>
+          </div>
+
+          <div class="text-center">
+            <p>
+              <input type="submit" value="Create" class="btn customer_btn">
+            </p>
+            or {{ 'Log in' | customer_login_link }}
+          </div>
+
+        {% endform %}
+
+      </div>
+
+    </div>
 </div>
+
+
+{% if shop.customer_accounts_enabled %}
+  {% if customer %}
+    
+
+  {% else %}
+
+  <script>
+  $(function() {
+    $('.container').avgrund({
+      width: 410, // max is 640px
+      height: 490, // max is 350px
+      showClose: true, // switch to 'true' for enabling close button
+      showCloseText: 'Close', // type your text for close button
+      closeByEscape: true, // enables closing popup by 'Esc'..
+      closeByDocument: true, // ..and by clicking document itself
+      holderClass: 'holder', //lets you name custom class for popin holder
+      enableStackAnimation: false, // another animation type
+      onBlurContainer: 'body', // enaables blur filter for specified block
+      openOnEvent: false, // set to 'false' to init on load
+      template: $('.content_for_popin'), // or function (elem) { }, or $('.content')
+    });
+  });
+</script>
+
+{% endif %}

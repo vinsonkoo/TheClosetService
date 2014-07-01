@@ -12,7 +12,12 @@
 
   <!-- Title and description ================================================== -->
   <title>
-  {{ page_title }}{% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+
+    {% if page_title == 'The Closet Service' %} Rent One of a Kind Dresses at The Closet Service
+    {% else %}
+    {{ page_title }}{% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+    {% endif %}
+
   </title>
 
   {% if page_description %}
@@ -59,19 +64,23 @@
   <!-- contentplum's instagram feed -->
   <script type="text/javascript" src="https://www.contentplum.com/js/feeds/code.js"></script>
 
-  <!-- CSS and JS for slideshow ================================================== -->
-    {{ 'flexslider.css' | asset_url | stylesheet_tag }}
-    {{ 'jquery.flexslider-min.js' | asset_url | script_tag }}
-    {{ 'jquery.flexslider.js' | asset_url | script_tag }}
-    <script type="text/javascript" charset="utf-8">
-      $(window).load(function() {
-        $('.flexslider').flexslider();
-      });
-    </script>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script src="http://malsup.github.com/jquery.cycle2.js"></script>
 
     <!-- Google Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Marck+Script' rel='stylesheet' type='text/css'>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ 'favicon.ico' | asset_url }}" type="image/x-icon" />
+
+    <!-- Avgund modal  -->
+    {{ 'avgrund.css' | asset_url | stylesheet_tag }}
+    {{ 'jquery.avgrund.js' | asset_url | script_tag }}
+
+    <meta name="google-site-verification" content="aigKP9gxcEIhlNrWVD_6oV1jCTdT7FpQOeB64NQG9QQ" /> 
+    
 
 </head>
 
@@ -87,40 +96,33 @@
         Use the uploaded logo from theme settings if enabled
       {% endcomment %}
       <div class="grid">
-        <div class="free_dry_cleaning text-center">
-          <h5>PS. We've Got Your Dry Cleaning Covered</h5>
+        <div class="grid-item text-center">
+          <h5 class="free_dry_cleaning">PS. We've Got Your Dry Cleaning Covered</h5>
+
         </div>
-        <div class="large--right medium--right small--right text-right">
-        {% comment %}
-          If customer accounts are enabled, provide login and create account links
-        {% endcomment %}
-          {% if shop.customer_accounts_enabled %}
-            <p class="customer">
+
+        <div class="grid-item large--right medium--right small--right text-right">
+
+          {% comment %}
+            If customer accounts are enabled, provide login and create account links
+          {% endcomment %}
+            {% if shop.customer_accounts_enabled %}
               {% if customer %}
-                Logged in as <a  href="/account">{{ customer.first_name }}</a> · {{ 'Log out' | customer_logout_link }}
+                Logged in as <a class="customer" href="/account">{{ customer.first_name }}</a> · {{ 'Log out' | customer_logout_link }}
               {% else %}
                 {{ 'Log in' | customer_login_link }}
                 {% if shop.customer_accounts_optional %}
                 or {{ 'Create an account' | customer_register_link }}
                 {% endif %}
               {% endif %}
-            </p>
-          {% endif %}
-
-        </div>
-
-        <div class="grid-item">
-          <a href="/"> {% comment %} Took the <a> tag from the if statement and put out here {% endcomment %}
-            <h1 class="header-logo medium--one-third push--medium--one-third">
-              {% if settings.use_logo %}
-                {{ 'logo.png' | asset_url | img_tag: shop.name }}
-            {% else %}
-              <a href="/">{{ shop.name }}</a>
             {% endif %}
-          </h1>
-          </a>
-          <ul class="shopping_cart_ul">   
-            <a href="/cart" id="cartToggle"><li>GARMENT BAG</li></a>      
+
+          <ul class="shopping_cart_ul large--right medium--right small--right">
+            <li>
+              <a href="/cart" id="cartToggle">
+              GARMENT BAG
+              </a>
+            </li>
             <li class="shopping_cart_holder">
               <a class="shopping_cart_count" href="/cart" id="cartToggle">
                 {% comment %}
@@ -139,11 +141,23 @@
               </a>
             </li>
           </ul>
-          <nav class="nav-bar" role="navigation">
-            {% include 'site-nav' %}
-          </nav>          
-            
+
         </div>
+
+        <h1 class="header-logo">
+          {% if settings.use_logo %}
+            <a href="/">
+              {{ 'logo.png' | asset_url | img_tag: shop.name }}
+            </a>
+        {% else %}
+          <a href="/">{{ shop.name }}</a>
+        {% endif %}
+        </h1>
+        
+        <nav class="nav-bar" role="navigation">
+          {% include 'site-nav' %}
+        </nav>          
+            
 
     </div>
 
@@ -211,12 +225,7 @@
       moneyFormat: {{ shop.money_format | json }} // Your shop money format, defined in liquid.
     });
   });
-  $(window).load(function() {
-    $('.flexslider').flexslider({
-          animation: "slide",
-          controlsContainer: ".flex-container"
-    });
-  });
+  
   </script>
   {% endif %}
 </body>

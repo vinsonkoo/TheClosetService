@@ -14,7 +14,7 @@
 
 
 {% comment %} Two column layout for featured blog posts, other posts and the social feeds. {% endcomment %}
-<div class="grid-item grid-item large--three-quarters push--large--one-eighth medium--one-whole">
+<div class="grid-item remove_padding large--three-quarters push--large--one-eighth medium--one-whole">
 
   {% comment %} Header may not be needed, just comment it out if it's not needed {% endcomment %}
     <header class="page-header text-center large--five-sixths push--large--one-twelfth medium--five-sixths push--medium--one-twelfth">
@@ -22,17 +22,17 @@
       {% if current_tags %}
         <h1>{{ blog.title | link_to: blog.url }} &raquo; {{ current_tags.first }}</h1>
       {% else %}
-        {% comment %} Change title of page to 'Zipped Up'
+        {% comment %} Change title of page to 'The Closet Girl'
         <h1>{{ blog.title }}</h1>
         {% endcomment %}
-        <h1>Zipped Up</h1>
+        <h1>The Closet Girl</h1>
       {% endif %}
 
     </header>
     
   {% comment %} COLUMN 1 {% endcomment %}
   
-  <div class="grid-item large--three-fifths medium--nine-tenths blog_column_one">  
+  <div class="grid-item large--three-fifths medium--three-fifths remove_padding">  
 
     {% comment %} 
       Content for featured blog posts go here 
@@ -78,7 +78,7 @@
       {% endcomment %}
       <div class="rte">
         {% if article.excerpt.size > 0 %}
-          {{ article.excerpt }}
+          <a href="{{ article.url }}">{{ article.excerpt }}</a>
         {% else %}
           <p>{{ article.content | strip_html | truncatewords: 100 }}</p>
         {% endif %}
@@ -120,7 +120,7 @@
 
 
   {% comment %} COLUMN 2 {% endcomment %}
-  <div class="grid-item large--two-fifths medium--one-whole blog_column_two">
+  <div class="grid-item large--two-fifths medium--two-fifths remove_padding">
 
     <div class="grid-item medium--one-whole">
       <div id="contentplum_widget_836344032"></div>
