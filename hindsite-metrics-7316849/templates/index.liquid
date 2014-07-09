@@ -5,149 +5,154 @@
   More info on global variables (available on all templates):
     - http://docs.shopify.com/themes/liquid-variables/global
 {% endcomment %}
-<div class="container">
 
-<div class="grid-item">
-  <div class="grid-item large--three-quarters push--large--one-eighth remove_padding dress_code">
+
+<div class="homepage_slideshow">
+  <div class="flexslider triangle grid-item remove_padding">
+    <ul class="slides text-center grid-item remove_padding">
+      <li class="grid-item remove_padding">
+        {{ '1.jpg' | asset_url | img_tag }}
+      </li>
+      <li class="grid-item remove_padding">
+        {{ '2.jpg' | asset_url | img_tag }}
+      </li>
+      <li class="grid-item remove_padding">
+        {{ '3.jpg' | asset_url | img_tag }}
+      </li>
+    </ul>
+  </div>
+
+</div>
+<div class="grid-item remove_padding container">
+
+  <div class="text-center carousel_container">
+    <h2 class="large--one-half push--large--one-quarter medium--one-half push--medium--one-quarter"><span>CHOOSE</span> YOUR NEXT LOOK</h2>
     
-    <a href="/collections/all">
-      <div class="cycle-slideshow">
-      
-        {{ 'dress1.jpg' | asset_url | img_tag }}
-        {{ 'dress2.jpg' | asset_url | img_tag }}
-        {{ 'dress3.jpg' | asset_url | img_tag }}
-        {{ 'dress4.jpg' | asset_url | img_tag }}
-        {{ 'dress5.jpg' | asset_url | img_tag }}
-        {{ 'dress6.jpg' | asset_url | img_tag }}
+    <div class="grid-item remove_padding grid-item large--three-quarters push--large--one-eighth medium--one-whole">
 
+      <div id="carousel">
+        <a href="/products/jovani">
+          <img src="{{ 'IMG_2123.png' | asset_url }}" id="item-1" />
+        </a>
+        <a href="/products/all-feminine-cobalt-blue-lace">
+          <img src="{{ 'IMG_2137.png' | asset_url }}" id="item-2" />
+        </a>
+        <a href="/products/red-dress">
+          <img src="{{ 'IMG_2160.png' | asset_url }}" id="item-3" />
+        </a>
+        <a href="products/white-dress">
+          <img src="{{ 'IMG_2185.png' | asset_url }}" id="item-4" />
+        </a>
+        <a href="/products/9twenty-victoria-lace">
+          <img src="{{ 'IMG_2208.png' | asset_url }}" id="item-5" />
+        </a>
+        <a href="/products/all-feminine-two-piece-skirt-and-top">
+          <img src="{{ 'IMG_2213.png' | asset_url }}" id="item-6" />
+        </a>
       </div>
-    </a>
-  </div>
-
-</div>
-
-
-<div class="grid text-center">
-
-  <div class="grid-item large--three-fifths"> <!-- column 1 -->
-    <div class="grid-item rent_dress">
-      <h3><a href="/pages/how-it-works">How It Works | <span class="pick_from_closet">Pick From Our Closet</span></a></h3>
-      <div class="grid-item large--three-fifths rent_dress_col1">
-        {{ 'rack.jpg' | asset_url | img_tag }}
-      </div>
-      <div class="grid-item large--two-fifths rent_dress_col2">
-        {% include 'booking-availability-index' %}
-      </div>
-    </div>
-    <div class="grid-item text-center box_pattern">
-      {{ 'box_pattern.png' | asset_url | img_tag }}
-    </div>
-    <div class="grid-item we_are_woman">
-      <a href="/pages/the-closet-story">
-        <h3>"We Are Woman" | The Closet Service Story</h3>
-        <div class="grid-item remove_padding ">
-          {{ 'i_am_woman_the_closet_service.jpg' | asset_url | img_tag }}
-        </div>
-      </a>
-    </div>
-  </div>
-
-
-  <div class="grid-item remove_padding large--two-fifths box_icon_1"> <!-- column 2 -->
-    <h4 class="text-center"><a href="/blogs/news">The Closet Girl | Dresses n' Culture</a></h4>
-
-    {% comment %}
-      Loop through three recent blog articles with the following code.
-
-      Since we're not on the blog template, we need to define the blog
-      handle we want to focus on. For this example we'll use the default 'news',
-      but you can create a blog page-specific content if you want.
-    {% endcomment %}
-
-    {% for article in blogs['news'].articles limit:2 %}
-
-      <div class="grid-item remove_padding large--one-whole medium--one-half">
-        {% comment %} Publish date not needed
-        <h6>
-          <time pubdate datetime="{{ article.published_at | date: '%Y-%m-%d' }}">
-            {{ article.published_at | date: '%b %d, %Y' }}
-          </time>
-        </h6>
-        {% endcomment %}
-        <h6><a href="{{ article.url }}">{{ article.title }}</a></h6>
+      {% comment %} Prev & Next buttons for carousel
+      <a href="#" id="prev">Prev</a> | <a href="#" id="next">Next</a>
+      {% endcomment %}
+      <div class="grid-item remove_padding text-center">
         
+        <a href="/collections/all" class="index_browse_dresses">Browse Dresses</a>
 
-        {% comment %}
-          Add a surrounding div with class 'rte' to anything that will come from the rich text editor.
-          Since this is just a listing page, you can either use the excerpt or truncate the full article.
-        {% endcomment %}
-        <div class="rte">
-          {% if article.excerpt.size > 0 %}
-            <a href="{{ article.url }}">{{ article.excerpt }}</a>
-          {% else %}
-            <p>{{ article.content | strip_html | truncatewords: 20 }}</p>
-          {% endif %}
-        </div>
-
-        {% comment %}
-          Show off meta information like number of comments and tags.
-        {% endcomment %}
-        <ul>
-
-          {% comment %}
-            Don't be fooled, the ? in comments_enabled? is part of the liquid tag.
-          {% endcomment %}
-          {% if blog.comments_enabled? %}
-          <li>
-            <a href="{{ article.url }}#comments">
-              {{ article.comments_count }} {{ article.comments_count | pluralize: 'comment','comments' }}
-            </a>
-          </li>
-          {% endif %}
-
-          {% comment %} tags not needed
-            {% include 'tags-article' %}
-          {% endcomment %}
-        </ul>
-
-        <p><a class="blog-read-more" href="{{ article.url }}">Read more</a></p>
-
+        {% comment %} {{ 'closet_choose_dress.jpg' | asset_url | img_tag }} {% endcomment %}
       </div>
-
-    {% endfor %}
+    </div>
   </div>
 </div>
 
+<div class="grid-item remove_padding text-center rent_in_3_steps">
+  <h2 class="large--one-third push--large--one-third medium--one-half push--medium--one-quarter text-center">RENT IN JUST <span>3</span> STEPS</h2>
+  
+  <div class="grid-item remove_padding text-center large--three-fifths push--large--one-fifth medium--four-fifths push--medium--one-tenth" style="background: #fff; border: 5px solid #fbb8b4;">
+    <a href="/pages/how-it-works">
+      {{ 'how_it_works2.png' | asset_url | img_tag }}
+    </a>
 
-{% comment %}
-  <h2 class="text-center">Featured Dresses</h2>
+    <div class="text-center">
+      <p>Think of us as your Best Friend. Rent from us anytime.</p>
+      <a href="/pages/how-it-works" class="index_browse_dresses">Get Started</a>
+    </div>
+
+  </div>
+</div>
+
+<div class="grid-item remove_padding large--three-quarters push--large--one-eighth medium--three-quarters push--medium--one-eighth the_closet_blog">
+  <h2 class="large--one-third push--large--one-third medium--one-half push--medium--one-quarter text-center">The Closet <span>Blog</span></h2>
 
   {% comment %}
-    Use class grid-uniform to have evenly sized columns clear
-    each other properly at each breakpoint.
+    Loop through three recent blog articles with the following code.
+
+    Since we're not on the blog template, we need to define the blog
+    handle we want to focus on. For this example we'll use the default 'news',
+    but you can create a blog page-specific content if you want.
   {% endcomment %}
-  <div class="grid-uniform large--four-fifths push--large--one-tenth">
 
-    {% comment %}
-      Loop through products in your featured collection.
-      This collection is created by default, but you must add products to it.
-    {% endcomment %}
-    {% for product in collections.featured.products limit:6 %}
+  {% for article in blogs['news'].articles limit:3 %}
 
-      {% include 'product-grid-item' %}
+    <div class="grid-item blog_post large--one-third medium--one-third">
+      {% comment %} Publish date not needed
+      <h6>
+        <time pubdate datetime="{{ article.published_at | date: '%Y-%m-%d' }}">
+          {{ article.published_at | date: '%b %d, %Y' }}
+        </time>
+      </h6>
+      {% endcomment %}
+      <h6><a href="{{ article.url }}">{{ article.title }}</a></h6>
+      
 
-    {% else %}
+      {% comment %}
+        Add a surrounding div with class 'rte' to anything that will come from the rich text editor.
+        Since this is just a listing page, you can either use the excerpt or truncate the full article.
+      {% endcomment %}
+      <div class="rte">
+        {% if article.excerpt.size > 0 %}
+          <a href="{{ article.url }}">{{ article.excerpt }}</a>
+        {% else %}
+          <p>{{ article.content | strip_html | truncatewords: 20 }}</p>
+        {% endif %}
+      </div>
 
-      <h4>We currently do not have any dresses in our Featured collection. Head over to our catalog for other dresses"</h4>
-    {% endfor %}
+      {% comment %}
+        Show off meta information like number of comments and tags.
+      {% endcomment %}
+      <ul>
 
-  </div>
-{% endcomment %}
+        {% comment %}
+          Don't be fooled, the ? in comments_enabled? is part of the liquid tag.
+        {% endcomment %}
+        {% if blog.comments_enabled? %}
+        <li>
+          <a href="{{ article.url }}#comments">
+            {{ article.comments_count }} {{ article.comments_count | pluralize: 'comment','comments' }}
+          </a>
+        </li>
+        {% endif %}
 
-</div> <!-- .container -->
+        {% comment %} tags not needed
+          {% include 'tags-article' %}
+        {% endcomment %}
+      </ul>
 
-<div class="content_for_popin grid-item">
+      <p><a class="blog-read-more" href="{{ article.url }}">Read more</a></p>
+
+    </div>
+
+  {% endfor %}
+
+</div>
+
+
+{% if shop.customer_accounts_enabled %}
+  {% if customer %}
+    
+  {% else %}
+    
+  <div class="content_for_popin grid-item">
   {% layout settings.customer_layout %}
+
 
     <div class="grid">
 
@@ -205,31 +210,73 @@
       </div>
 
     </div>
-</div>
-
-
-{% if shop.customer_accounts_enabled %}
-  {% if customer %}
-    
-
-  {% else %}
-
+  </div>
   <script>
-  $(function() {
-    $('.container').avgrund({
-      width: 410, // max is 640px
-      height: 490, // max is 350px
-      showClose: true, // switch to 'true' for enabling close button
-      showCloseText: 'Close', // type your text for close button
-      closeByEscape: true, // enables closing popup by 'Esc'..
-      closeByDocument: true, // ..and by clicking document itself
-      holderClass: 'holder', //lets you name custom class for popin holder
-      enableStackAnimation: false, // another animation type
-      onBlurContainer: 'body', // enaables blur filter for specified block
-      openOnEvent: false, // set to 'false' to init on load
-      template: $('.content_for_popin'), // or function (elem) { }, or $('.content')
+    $(function() {
+      $('.main-content').avgrund({
+        width: 410, // max is 640px
+        height: 490, // max is 350px
+        showClose: true, // switch to 'true' for enabling close button
+        showCloseText: 'Close', // type your text for close button
+        closeByEscape: true, // enables closing popup by 'Esc'..
+        closeByDocument: true, // ..and by clicking document itself
+        holderClass: 'holder', //lets you name custom class for popin holder
+        enableStackAnimation: false, // another animation type
+        onBlurContainer: 'body', // enaables blur filter for specified block
+        openOnEvent: false, // set to 'false' to init on load
+        template: $('.content_for_popin'), // or function (elem) { }, or $('.content')
+      });
     });
-  });
-</script>
+  </script>
 
+  
+  {% endif %}
 {% endif %}
+  
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      var carousel = $("#carousel").waterwheelCarousel({
+        flankingItems: 2,
+        movingToCenter: function ($item) {
+          $('#callback-output').prepend('movingToCenter: ' + $item.attr('id') + '<br/>');
+        },
+        movedToCenter: function ($item) {
+          $('#callback-output').prepend('movedToCenter: ' + $item.attr('id') + '<br/>');
+        },
+        movingFromCenter: function ($item) {
+          $('#callback-output').prepend('movingFromCenter: ' + $item.attr('id') + '<br/>');
+        },
+        movedFromCenter: function ($item) {
+          $('#callback-output').prepend('movedFromCenter: ' + $item.attr('id') + '<br/>');
+        },
+        clickedCenter: function ($item) {
+          $('#callback-output').prepend('clickedCenter: ' + $item.attr('id') + '<br/>');
+        }
+      });
+
+      $('#prev').bind('click', function () {
+        carousel.prev();
+        return false
+      });
+
+      $('#next').bind('click', function () {
+        carousel.next();
+        return false;
+      });
+
+      $('#reload').bind('click', function () {
+        newOptions = eval("(" + $('#newoptions').val() + ")");
+        carousel.reload(newOptions);
+        return false;
+      });
+
+    });
+  </script>
+
+  <script type="text/javascript" charset="utf-8">
+    $(window).load(function() {
+      $('.flexslider').flexslider();
+    });
+  </script>

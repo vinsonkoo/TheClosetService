@@ -139,8 +139,8 @@
                 {% endfor %}
               </select>
 
-              <h5>Not sure on your size? Click <a href="/pages/how-it-works#size-chart">here</a> for a more detailed size chart.</h5>
-                
+              <h5>Not sure on your size? Click <a id="size_popup" href="#size-chart" style="color: #de2061">here</a> for a more detailed size chart.</h5>
+
               {% comment %}
                 Optionally show the 'compare at' or original price of the product.
               {% endcomment %}
@@ -319,6 +319,76 @@ $(document).ready(function() {
   });
 });
 
-
+  $(function() {
+    $('.main-content').avgrund({
+      width: 640, // max is 640px
+      height: 400, // max is 350px
+      showClose: true, // switch to 'true' for enabling close button
+      showCloseText: 'Close', // type your text for close button
+      closeByEscape: true, // enables closing popup by 'Esc'..
+      closeByDocument: true, // ..and by clicking document itself
+      holderClass: 'holder', //lets you name custom class for popin holder
+      enableStackAnimation: false, // another animation type
+      onBlurContainer: 'body', // enaables blur filter for specified block
+      openOnEvent: true, // set to 'false' to init on load
+      template: $('.content_for_size_chart'), // or function (elem) { }, or $('.content')
+    });
+  });
 
 </script>
+
+<aside class="content_for_size_chart">
+  <h1 class="text-center">Size Chart</h1>
+  <table class="size_chart">
+  <tbody>
+    <tr>
+      <td style="text-align: center;"> </td>
+      <td style="text-align: center;"><strong>XS</strong></td>
+      <td colspan="2" style="text-align: center;"><strong>S</strong></td>
+      <td colspan="2" style="text-align: center;"><strong>M</strong></td>
+      <td style="text-align: center;"><strong>L</strong></td>
+      <td style="text-align: center;"><strong>XL</strong></td>
+    </tr>
+    <tr style="text-align: center;">
+      <td><strong>Size</strong></td>
+      <td>P</td>
+      <td>4</td>
+      <td>6</td>
+      <td>8</td>
+      <td>10</td>
+      <td>12</td>
+      <td>14</td>
+    </tr>
+    <tr style="text-align: center;">
+      <td><strong>Bust</strong></td>
+      <td>32"</td>
+      <td>33"</td>
+      <td>34"</td>
+      <td>34"</td>
+      <td>36"</td>
+      <td>37 1/2"</td>
+      <td>39"</td>
+    </tr>
+    <tr style="text-align: center;">
+      <td><strong>Waist</strong></td>
+      <td>23 1/2"</td>
+      <td>24 1/2"</td>
+      <td>25 1/2"</td>
+      <td>26 1/2"</td>
+      <td>27 1/2"</td>
+      <td>29 1/2"</td>
+      <td>30 1/2"</td>
+    </tr>
+    <tr style="text-align: center;">
+      <td><strong>Hips</strong></td>
+      <td>34"</td>
+      <td>35"</td>
+      <td>36"</td>
+      <td>37"</td>
+      <td>38"</td>
+      <td>39 1/2"</td>
+      <td>41"</td>
+    </tr>
+  </tbody>
+  </table>
+</aside>

@@ -65,18 +65,10 @@
   <script type="text/javascript" src="https://www.contentplum.com/js/feeds/code.js"></script>
 
 
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-  <script src="http://malsup.github.com/jquery.cycle2.js"></script>
-
   <!-- CSS and JS for slideshow ================================================== -->
   {{ 'flexslider.css' | asset_url | stylesheet_tag }}
   {{ 'jquery.flexslider-min.js' | asset_url | script_tag }}
   {{ 'jquery.flexslider.js' | asset_url | script_tag }}
-  <script type="text/javascript" charset="utf-8">
-   $(window).load(function() {
-     $('.flexslider').flexslider();
-   });
-  </script>
 
   <!-- Google Fonts ================================================== -->
   <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
@@ -88,6 +80,9 @@
   <!-- Avgrund modal  ================================================== -->
   {{ 'avgrund.css' | asset_url | stylesheet_tag }}
   {{ 'jquery.avgrund.js' | asset_url | script_tag }}
+
+  <!-- Waterwheel Carousel  ================================================== -->
+  {{ 'jquery.waterwheelCarousel.js' | asset_url | script_tag }}
 
   <meta name="google-site-verification" content="aigKP9gxcEIhlNrWVD_6oV1jCTdT7FpQOeB64NQG9QQ" /> 
 
@@ -106,70 +101,70 @@
         Use the uploaded logo from theme settings if enabled
       {% endcomment %}
       <div class="grid">
-        <div class="grid-item text-center">
-          <h5 class="free_dry_cleaning">PS. We've Got Your Dry Cleaning Covered</h5>
+        <h1 class="grid-item remove_padding large--one-fifth medium--one-fifth small--one-third header-logo">
+            {% if settings.use_logo %}
+              <a href="/">
+                {{ 'logo.png' | asset_url | img_tag: shop.name }}
+              </a>
+          {% else %}
+            <a href="/">{{ shop.name }}</a>
+          {% endif %}
+          </h1>
 
-        </div>
+        <!-- <div class="customer_header"> -->
 
-        <div class="grid-item large--right medium--right small--right text-right">
-
-          {% comment %}
-            If customer accounts are enabled, provide login and create account links
-          {% endcomment %}
-            {% if shop.customer_accounts_enabled %}
-              {% if customer %}
-                Logged in as <a class="customer" href="/account">{{ customer.first_name }}</a> · {{ 'Log out' | customer_logout_link }}
-              {% else %}
-                {{ 'Log in' | customer_login_link }}
-                {% if shop.customer_accounts_optional %}
-                or {{ 'Create an account' | customer_register_link }}
+          <div class="customer_header grid-item large--three-fifths push--large--one-fifth medium--one-third push--medium--one-third small--three-fifths text-center">
+            {% comment %}
+              If customer accounts are enabled, provide login and create account links
+            {% endcomment %}
+              {% if shop.customer_accounts_enabled %}
+                {% if customer %}
+                  <span>
+                    Logged in as <a class="customer" href="/account">{{ customer.first_name }}</a> | {{ 'Log out' | customer_logout_link }}
+                {% else %}
+                  {% if shop.customer_accounts_optional %}
+                    {{ 'SIGN UP FOR AMAZING DEALS ' | customer_register_link }}
+                  {% endif %} |
+                  {{ ' MEMBER SIGN IN' | customer_login_link }}
+                  </span>
                 {% endif %}
               {% endif %}
-            {% endif %}
-
-          <ul class="shopping_cart_ul large--right medium--right small--right">
-            <li>
+              <!-- <span class="grid-item"> -->
+          </div>
+          <div class="grid-item remove_padding large--one-fifth push--large--one-fifth medium--one-third push--medium--one-third small--three-fifths">
+            <span class="garment_bag">
               <a href="/cart" id="cartToggle">
               GARMENT BAG
               </a>
-            </li>
-            <li class="shopping_cart_holder">
-              <a class="shopping_cart_count" href="/cart" id="cartToggle">
-                {% comment %}
-                  You cart/checkout link should at least show the number of items in it.
-                  Below shows the item count followed by item(s) and the total cart price.
+              <span class="shopping_cart">
+                <a class="shopping_cart_count" href="/cart" id="cartToggle">
+                  {% comment %}
+                    You cart/checkout link should at least show the number of items in it.
+                    Below shows the item count followed by item(s) and the total cart price.
 
-                  Ajaxify Cart Notes:
-                    - #cartToggle toggles cart visibility (drawer or modal)
-                    - #cartCount updates the total number of items in the cart
-                    - #cartCost updates the total cost of the cart
-                    - Documentation:  http://shopify.com/timber#ajax-cart
-                {% endcomment %}
+                    Ajaxify Cart Notes:
+                      - #cartToggle toggles cart visibility (drawer or modal)
+                      - #cartCount updates the total number of items in the cart
+                      - #cartCost updates the total cost of the cart
+                      - Documentation:  http://shopify.com/timber#ajax-cart
+                  {% endcomment %}
+                      
+                      <span id="cartCount">{{ cart.item_count }}</span>{% comment %} price and '(items)' not needed  {{ cart.item_count | pluralize: 'ITEM', 'ITEMS' }} <span id="cartCost">{{ cart.total_price | money }}</span>{% endcomment %}
                     
-                    <span id="cartCount">{{ cart.item_count }}</span>{% comment %} price and '(items)' not needed  {{ cart.item_count | pluralize: 'ITEM', 'ITEMS' }} <span id="cartCost">{{ cart.total_price | money }}</span>{% endcomment %}
-                  
-              </a>
-            </li>
-          </ul>
+                </a>
+              </span>
+            </span>
 
-        </div>
+          </div>
 
-        <h1 class="header-logo">
-          {% if settings.use_logo %}
-            <a href="/">
-              {{ 'logo.png' | asset_url | img_tag: shop.name }}
-            </a>
-        {% else %}
-          <a href="/">{{ shop.name }}</a>
-        {% endif %}
-        </h1>
+        <!-- </div> -->
         
         <nav class="nav-bar" role="navigation">
           {% include 'site-nav' %}
         </nav>          
             
-
-    </div>
+      </div> <!-- .grid -->
+    </div> <!-- .wrapper -->
 
 
   </header>
@@ -238,5 +233,6 @@
   
   </script>
   {% endif %}
+
 </body>
 </html>

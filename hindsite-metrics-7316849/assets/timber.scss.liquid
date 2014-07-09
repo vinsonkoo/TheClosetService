@@ -1539,9 +1539,7 @@ a.btn-secondary {
 
 
 /**********CUSTOM STYLES FOR THE CLOSET SERVICE**********/
-.main-content {
-  padding-top: 12px;
-}
+
 p.rent_from_closet {
   color: #F141BA;
   font-style: italic;
@@ -1552,6 +1550,7 @@ p.rent_from_closet {
 /*HEADER*/
 .site-header .wrapper {
   padding: 0;
+  margin-left: 24px;
 }
 
 .site-header {
@@ -1559,77 +1558,71 @@ p.rent_from_closet {
   padding: 0;
 }
 
-h5.free_dry_cleaning {
-  color: #7a7a7a;
-  /*margin-top: 0px;*/
-  margin-bottom: 0px;
+.header-logo {
+  text-align: center;
+  margin-top: 0;
+  /*padding-left: 12px;*/
 }
 
-.shopping_cart_ul {
-  text-align: right;
-  padding-right: 24px;
+.header-logo img {
+  position: fixed;
+  z-index: 9999;
   margin-bottom: 0;
+  float: left;
+  margin-left: 24px;
 }
 
-.shopping_cart_ul li {
-  display: inline;
-  font-size: 16px;
+@media screen and (max-width: 768px) {
+  .header-logo img {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .header-logo img {
+    position: relative;
+    z-index: 1;
+  }
+  .garment_bag {
+    text-align: center !important;
+  }
+}
+
+.customer_header {
+  padding: 12px 0;
+  line-height: 35px;
+  font-size: 12px;
   position: relative;
 }
 
-.shopping_cart_ul a {
+.customer_header a {
+  color: #f95ee1 !important;
   text-decoration: none;
-  color: #ff8aff !important;
+}
+
+.garment_bag {
+  float: right;
+  text-align: left;
+  font-size: 12px;
+  padding: 12px 0;
+}
+
+.garment_bag a {
+  color: #f95ee1;
+  text-decoration: none;
 }
 
 .shopping_cart_count {
   position: relative;
+  padding: 25px 20px 20px 30px;
   text-align: center;
-  display: block;
-  background-image: url(garment_bag_vector.png);
+  background-image: url(shopping_bag.png);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: cover;
   line-height: 35px !important;
   text-decoration: none;
-}
-
-.header-logo {
-  text-align: center;
-  margin-top: 0;
-  padding-left: 12px;
-}
-
-.header-logo img {
-  display: inline;
-  position: relative;
-  top: -40px;
-  z-index: 0;
-  margin-bottom: 0;
-}
-
-@media screen and (min-width: 768px) {
-  .header-logo {
-    float: none;
-  }
-}
-
-.customer, #customer_register_link {
-  padding-right: 12px;
-}
-
-.customer, p.customer a {
-  color: #000;
-  margin-bottom: 0px;
-}
-
-@media screen and (max-width: 768px) {
-  .customer {
-    padding-right: 0;
-  }
-  .shopping_cart_ul {
-    padding-right: 0;
-  }
+  color: #ff8aff !important;
 }
 
 .nav-bar {
@@ -1637,8 +1630,12 @@ h5.free_dry_cleaning {
 }
 
 .site-nav {
-  background: #ffcc00;
-  margin-top: -20px; /* to match header-logo img being pushed up*/
+  background: #4a4a4a;
+  border: 1px solid #ff4e8e;
+}
+
+ul.site-nav {
+  border: 1px solid #4a4a4a;
 }
 
 ul.site-nav li a {
@@ -1647,7 +1644,7 @@ ul.site-nav li a {
   white-space: normal;
   color: #fff;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 36px;
 }
 
@@ -1673,124 +1670,150 @@ ul.site-nav li {
 }
 
 #cartCount {
-  font-size: 16px;
+  font-size: 14px;
+  color: #fff;
+  font-weight: bold;
+  margin-right: 27px;
 }
 
 /*HEADER*/
 
 /*INDEX*/
-.front_page_images {
-  padding-left: 0px;
-  border: 50px solid transparent;
-  -webkit-border-image:url(border.png) 50 50 stretch; /* Safari 5 */
-  -o-border-image:url(border.png) 50 50 stretch; /* Opera */
-  border-image:url(border.png) 50 50 stretch;
-  background-image: url(reserverentreturn.jpg);
+
+.homepage_slideshow {
+  margin-top: -48px;
+}
+
+.triangle {
+    background-color: #000;
+    color: #333;
+    display: inline-block;
+    position: relative;
+}
+.triangle:after,
+.triangle:before {
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #fff;
+    bottom: -20px;
+    content: '';
+    left: 50%;
+    margin-left: -20px;
+    position: absolute;
+}
+
+/* Styling for second triangle (border) */
+
+.triangle:before {
+    border-left: 23px solid transparent;
+    border-right: 23px solid transparent;
+    border-top: 23px solid;
+    border-top-color: inherit; /* Can't be included in the shorthand to work */
+    bottom: -23px;
+    margin-left: -23px;
+}
+
+
+.carousel_container span {
+  color: #f53170;
+}
+/*WATERWHEEL CAROUSEL*/
+#carousel {
+  width:100%;
+  height:600px;
+  position:relative;
+  clear:both;
+  overflow:hidden;
+  background:#FFF;
+  margin: auto;
+}
+#carousel img {
+  visibility:hidden; /* hide images until carousel can handle them */
+  cursor:pointer; /* otherwise it's not as obvious items can be clicked */
+}
+
+.split-left {
+  width:450px;
+  float:left;
+}
+.split-right {
+  width:400px;
+  float:left;
+  margin-left:10px;
+}
+#callback-output {
+  height:250px;
+  overflow:scroll;
+}
+textarea#newoptions {
+  width:430px;
+}
+/*WATERWHEEL CAROUSEL*/
+
+.index_browse_dresses {
+  background-image: url(closet_choose_dress.jpg);
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
+  padding-right: 25px;
+}
+
+a.index_browse_dresses {
+  font-size: 16px;
+  color: #f72470;
+  text-decoration: none;
+  font-weight: bold;
+
+}
+
+.rent_in_3_steps {
+  background-image: url(closet.jpg);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
-  /*margin: 0 auto;*/
+  background-size: cover;
+  height: 450px;
+  margin-top: 30px;
+}
+
+.rent_in_3_steps a {
+  text-decoration: none;
+}
+
+.rent_in_3_steps h2 {
+  background: #fdb5b5;
+  margin-top: -20px;
+  margin-bottom: 30px;
+}
+
+.rent_in_3_steps h2 span {
+  color: #fff;
+}
+
+.the_closet_blog h2 {
+  background: #fff;
+  margin-top: -20px;
+  border: 1px solid black;
+}
+
+.the_closet_blog h2 span{
+  color: #f53170;
+}
+
+.the_closet_blog h5 {
+  color: #a1aeb3;
+  font-weight: bold;
+}
+
+.the_closet_blog a.blog-read-more {
+  color: #f53170;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 @media screen and (max-width: 480px) {
-  .front_page_images {
-    margin-bottom: 20px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .front_page_images {
+  .blog_post {
     padding-left: 0px;
   }
-  .side_image {
-    display: none;
-  }
-}
-
-a.browse_dresses {
-  text-align: center;
-  z-index: 2;
-  position: relative;
-  display: block;
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  padding: 16px 5px;;
-  background: #ff7891;
-  color: #fff;
-  border: 4px solid #ffe489;
-  border-radius: 0px;
-  font-size: 1em;
-  font-weight: bold;
-  display: inline-block;
-}
-
-.browse_dresses:hover {
-  background: #c9455c;
-}
-
-.browse_dresses:active {
-  padding: 17px 10px 15px;
-}
-
-.rent_dress {
-  border: 2px solid #fc31c4;
-  padding: 20px;
-}
-
-.rent_dress a {
-  text-decoration: underline;
-}
-
-.dress_code {
-  margin-bottom: 20px;
-}
-
-
-span.pick_from_closet {
-  color: #bd4bb2;
-}
-
-.rent_dress_col1 {
-  padding-left: 0px;
-}
-
-@media screen and (max-width: 768px) {
-  .rent_dress_col2 {
-    padding-left: 0px;
-  }
-}
-
-.box_pattern {
-  margin: 10px 0;
-}
-.we_are_woman {
-  border: 2px solid #4a4a4a;
-  padding: 20px;
-  color: #fa3c98;
-  margin-bottom: 20px;
-}
-
-.dress_collage {
-  clear: none !important;
-}
-
-.box_icon_1 {
-  border-top: 20px solid transparent;
-  border-right: 40px solid transparent;
-  border-bottom: 20px solid transparent;
-  border-left: 40px solid transparent;
-  -webkit-border-image:url(box_icon.jpg) 40 10 stretch; /* Safari 5 */
-  -o-border-image:url(box_icon.jpg) 40 10 stretch; /* Opera */
-  border-image:url(box_icon.jpg) 40 10 stretch;
-}
-
-.box_icon_1 h4 {
-  font-style: italic;
-}
-
-.box_icon_1 h4 a {
-  text-decoration: underline;
 }
 
 .cycle-slideshow {
