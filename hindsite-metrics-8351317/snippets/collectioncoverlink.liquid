@@ -1,0 +1,17 @@
+{% if collection.description.size > 0 %}
+  <h2><a href="{{ collection.url }}">{{ collection.title }}</a></h2>
+  {% if collection.all_products_count != 0 %}
+    <h3 class="single">{{ collection.description }}</h3>
+  {% else %}
+    <h3>{{ collection.description }}</h3>
+  {% endif %}
+{% else %}
+
+	{% comment %} Heading for /collections. Unneeded because cover images have the text on them.
+  <h2 class="single collections_text"><a href="{{ collection.url }}">{{ collection.title }}</a></h2>
+  {% endcomment %}
+{% endif %}
+
+{% if collection.all_products_count == 0 %}
+  <p>There are no products in this collection.</p>
+{% endif %}
