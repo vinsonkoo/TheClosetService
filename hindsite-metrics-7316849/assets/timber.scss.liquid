@@ -1572,22 +1572,6 @@ p.rent_from_closet {
   margin-left: 24px;
 }
 
-@media screen and (max-width: 768px) {
-  .header-logo img {
-    margin-left: 0;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .header-logo img {
-    position: relative;
-    z-index: 1;
-  }
-  .garment_bag {
-    text-align: center !important;
-  }
-}
-
 .customer_header {
   padding: 12px 0;
   line-height: 35px;
@@ -1643,30 +1627,12 @@ ul.site-nav li a {
   padding: 0;
   white-space: normal;
   color: #fff;
-  font-weight: bold;
   font-size: 14px;
   line-height: 36px;
 }
 
 ul.site-nav li {
   padding-left: 0px;
-}
-
-@media screen and (max-width: 768px) {
-  ul.site-nav li a {
-    padding-top: 0px;
-    white-space: normal;
-  }
-  .nav-bar ul.site-nav {
-    margin-left: 0;
-    margin-top: 0;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  ul.site-nav li {
-    margin-top: 0px;
-  }
 }
 
 #cartCount {
@@ -1750,6 +1716,18 @@ textarea#newoptions {
 }
 /*WATERWHEEL CAROUSEL*/
 
+.rent_next_look {
+  background-image: url(button.png);
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
+  padding-right: 130px;
+  text-decoration: none !important;
+}
+.rent_next_look a:hover {
+  text-decoration: none !important;
+}
+
 .index_browse_dresses {
   background-image: url(closet_choose_dress.jpg);
   background-repeat: no-repeat;
@@ -1771,7 +1749,7 @@ a.index_browse_dresses {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  height: 450px;
+  height: 550px;
   margin-top: 30px;
 }
 
@@ -1787,6 +1765,16 @@ a.index_browse_dresses {
 
 .rent_in_3_steps h2 span {
   color: #fff;
+}
+
+.how_it_works_diagram {
+  background: #fff;
+  border: 5px solid #fbb8b4;
+  padding-bottom: 20px;
+}
+
+.how_it_works_diagram a p {
+  text-decoration: none !important;
 }
 
 .the_closet_blog h2 {
@@ -1808,12 +1796,6 @@ a.index_browse_dresses {
   color: #f53170;
   text-decoration: none;
   font-weight: bold;
-}
-
-@media screen and (max-width: 480px) {
-  .blog_post {
-    padding-left: 0px;
-  }
 }
 
 .cycle-slideshow {
@@ -1868,6 +1850,7 @@ a.index_browse_dresses {
   text-align: left;
   padding: 24px;
   font-family: times new roman;
+  margin: 20px 0;
 }
 
 .how_it_works_faq:active {
@@ -1988,30 +1971,6 @@ input[type="number"] {
   box-sizing: border-box;
 }
 
-@media screen and (min-width: 769px) {
-  .collections-grid .grid-item:nth-child(3n) {
-      border-right: none;
-  }
-  .collections-grid .grid-item:nth-last-child(4) ~ .grid-item {
-      border-bottom: none;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .collections-grid .grid-item:nth-child(2n) {
-      border-right: none;
-    }
-  .collections-grid .grid-item:nth-last-child(3) ~ .grid-item {
-      border-bottom: none;
-  }
-}
-@media screen and (max-width: 480px) {
-  .collections-grid .grid-item {
-    border: none;
-    border-bottom: 1px solid #aaa;
-  }
-}
-
 /*COLLECTIONS PAGE*/
 
 /*BLOG PAGE*/
@@ -2050,25 +2009,9 @@ input[type="number"] {
   background: #f6f6f6;
 }
 
-
-@media screen and (max-width: 768px) {
-  .footer_social_media {
-    top: -1em;
-  }
-}
-@media screen and (max-width: 480px) {
-  .footer_social_media {
-    top: 1em;
-    padding-top: 20px;
-    border-top: 1px solid #000;
-  }
-  .newsletter {
-    margin-top: 1em;
-  }
-}
-
-.footer_links {
+a.footer_links {
   font-size: 12px;
+  text-decoration: none;
 }
 
 .footer_titles {
@@ -2128,13 +2071,6 @@ input[type="number"] {
 
 .right_search_form {
   margin: 12px 12px 0 0;
-}
-
-@media screen and (max-width: 480px) {
-  .right_search_form {
-    margin-bottom: 20px;
-    padding-left: 0px;
-  }
 }
 
 #booking-form {
@@ -2247,12 +2183,6 @@ input.datepicker_input_product:-ms-input-placeholder {
   margin-top: -10em;
 }
 
-@media screen and (max-width: 768px) {
-  .bta_search_results {
-    margin-top: 0em;
-  }
-}
-
 label.find_available_dresses {
   cursor: default;
 }
@@ -2293,6 +2223,7 @@ label.find_available_dresses {
 table.size_chart > th, td {
   border: 1px solid #000;
 }
+
 /*SIZE CHART*/
 
 
@@ -2377,3 +2308,76 @@ hr.thick_hr {
 .customer_btn:hover {
   background: #d7084f;
 }
+
+/*MEDIA QUERIES FOR MIN WIDTH OF 769PX*/
+@media screen and (min-width: 769px) {
+  .collections-grid .grid-item:nth-child(3n) {
+      border-right: none;
+  }
+  .collections-grid .grid-item:nth-last-child(4) ~ .grid-item {
+      border-bottom: none;
+  }
+}
+/*MEDIA QUERIES FOR MIN WIDTH OF 769PX*/
+
+/*MEDIA QUERIES FOR MAX WIDTH OF 768PX*/
+@media screen and (max-width: 768px) {
+  .header-logo img {
+    margin-left: 0;
+  }
+  ul.site-nav li a {
+    padding-top: 0px;
+    white-space: normal;
+  }
+  .nav-bar ul.site-nav {
+    margin-left: 0;
+    margin-top: 0;
+  }
+  .collections-grid .grid-item:nth-child(2n) {
+      border-right: none;
+    }
+  .collections-grid .grid-item:nth-last-child(3) ~ .grid-item {
+      border-bottom: none;
+  }
+  .footer_social_media {
+    top: -1em;
+  }
+  .bta_search_results {
+    margin-top: 0em;
+  }
+}
+/*MEDIA QUERIES FOR MAX WIDTH OF 768PX*/
+
+/*MEDIA QUERIES FOR MAX WIDTH OF 480PX*/
+@media screen and (max-width: 480px) {
+  .header-logo img {
+    position: relative;
+    z-index: 1;
+  }
+  .garment_bag {
+    text-align: center !important;
+  }
+  ul.site-nav li {
+    margin-top: 0px;
+  }
+  .blog_post {
+    padding-left: 0px;
+  }
+  .collections-grid .grid-item {
+    border: none;
+    border-bottom: 1px solid #aaa;
+  }
+  .footer_social_media {
+    top: 1em;
+    padding-top: 20px;
+    border-top: 1px solid #000;
+  }
+  .newsletter {
+    margin-top: 1em;
+  }
+  .right_search_form {
+    margin-bottom: 20px;
+    padding-left: 0px;
+  }
+}
+/*MEDIA QUERIES FOR MAX WIDTH OF 480PX*/

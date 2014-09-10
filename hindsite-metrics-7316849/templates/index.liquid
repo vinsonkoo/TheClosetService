@@ -26,7 +26,8 @@
 <div class="grid-item remove_padding container">
 
   <div class="text-center carousel_container">
-    <h2 class="large--one-half push--large--one-quarter medium--one-half push--medium--one-quarter"><span>CHOOSE</span> YOUR NEXT LOOK</h2>
+    
+    <h2 class="large--one-half push--large--one-quarter medium--one-half push--medium--one-quarter"><a href="/collections/all" class="rent_next_look"><span>RENT</span> AN AMAZING DRESS</a></h2>
     
     <div class="grid-item remove_padding grid-item large--three-quarters push--large--one-eighth medium--one-whole">
 
@@ -53,12 +54,15 @@
       {% comment %} Prev & Next buttons for carousel
       <a href="#" id="prev">Prev</a> | <a href="#" id="next">Next</a>
       {% endcomment %}
+      
+      {% comment %}
       <div class="grid-item remove_padding text-center">
         
         <a href="/collections/all" class="index_browse_dresses">Browse Dresses</a>
 
         {% comment %} {{ 'closet_choose_dress.jpg' | asset_url | img_tag }} {% endcomment %}
       </div>
+      {% endcomment %}
     </div>
   </div>
 </div>
@@ -66,21 +70,18 @@
 <div class="grid-item remove_padding text-center rent_in_3_steps">
   <h2 class="large--one-third push--large--one-third medium--one-half push--medium--one-quarter text-center">RENT IN JUST <span>3</span> STEPS</h2>
   
-  <div class="grid-item remove_padding text-center large--three-fifths push--large--one-fifth medium--four-fifths push--medium--one-tenth" style="background: #fff; border: 5px solid #fbb8b4;">
+  <div class="grid-item remove_padding text-center large--three-fifths push--large--one-fifth medium--four-fifths push--medium--one-tenth how_it_works_diagram">
     <a href="/pages/how-it-works">
       {{ 'how_it_works2.png' | asset_url | img_tag }}
-    </a>
-
-    <div class="text-center">
       <p>Think of us as your Best Friend. Rent from us anytime.</p>
-      <a href="/pages/how-it-works" class="index_browse_dresses">Get Started</a>
-    </div>
-
+    </a>
+    <a href="/pages/how-it-works" class="index_browse_dresses">Get Started</a>
   </div>
+
 </div>
 
 <div class="grid-item remove_padding large--three-quarters push--large--one-eighth medium--three-quarters push--medium--one-eighth the_closet_blog">
-  <h2 class="large--one-third push--large--one-third medium--one-half push--medium--one-quarter text-center">The Closet <span>Blog</span></h2>
+  <h2 class="large--one-third push--large--one-third medium--one-half push--medium--one-quarter text-center">The Closet <span>Girl</span></h2>
 
   {% comment %}
     Loop through three recent blog articles with the following code.

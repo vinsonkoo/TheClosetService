@@ -4,7 +4,6 @@
 
     <header class="page-header how_it_works_header grid-item large--two-thirds push--large--one-sixth medium--two-thirds push--medium--one-sixth text-center remove_padding">
       <h2 class=""> {{ page.title }} | Picking Your Dress</h2>
-      {{ 'box_pattern.png' | asset_url | img_tag }}
     </header>
 
     {% comment %}
@@ -62,21 +61,13 @@
         {% include 'booking-availability-how-it-works' %}
       </div>
 
-      <div class="grid-item mosaic_strip large--one-half medium--one-half remove_padding">
-        {{ 'mosaic_strip.png' | asset_url | img_tag }}
-      </div>
-
-      <a class="grid-item remove_padding remove_text_dec" href="/pages/faq-dress-rental">
+      <a class="grid-item remove_padding remove_text_dec" href="/pages/faqs-dress-rental">
         <div class="how_it_works_faq">
           <h1>F<span>requently</span></h1>
           <h1>A<span>sked</span></h1>
           <h1>Q<span>uestions</span></h1>
         </div>
       </a>
-
-      <div class="grid-item mosaic_strip large--one-half medium--one-half remove_padding">
-        {{ 'mosaic_strip.png' | asset_url | img_tag }}
-      </div>
       
       <a class="grid-item remove_padding remove_text_dec" href="/pages/size-chart">
         {{ 'sizing_chart.jpg' | asset_url | img_tag }}
