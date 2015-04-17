@@ -3,7 +3,10 @@
 
     {% if collections.size > 0 %}
       {% for collection in collections %}
-
+      {% unless collection.handle == "the-glamour-look" %}
+      {% unless collection.handle == "the-fresh-face-look" %}
+      {% unless collection.handle == "the-complete-look" %}
+      {% unless collection.handle == "consultations" %}
         {% if collection.image %}
 
           {% comment %} This section is for /collections {% endcomment %}
@@ -35,6 +38,10 @@
           </div>
 
         {% endif %}
+      {% endunless %}
+      {% endunless %}
+      {% endunless %}
+      {% endunless %}
       {% endfor %}
 
     {% else %}

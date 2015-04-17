@@ -1,10 +1,28 @@
-        <section class="page">
-            <div class="page__inner">
+<section class="page">
+  <div class="glam-headshot">
+    {% if page.title == "Glam Packages" %}
+      {{ 'glam-headshot.jpeg' | asset_url | img_tag: '', "slide__image" }}
+    {% else %}
+    {% endif %}
+  </div>
+    <div class="page__inner">
 
-                <div class="page__text{% if settings.use_footer %} hasfooter{% endif %} rte">
-                	<h1 class="gold_text">{{ page.title }}</h1>
-                    {{ page.content }}
-                </div>
+        <div class="page__text{% if settings.use_footer %} hasfooter{% endif %} rte">
 
-            </div>
-        </section>
+  				{% if page.title == "Glam Packages" %}
+
+  				{% comment %}
+          <h1 class="text_center">{{ page.title }}</h1>
+          {% endcomment %}
+            {{ page.content }}
+
+  				{% else %}
+        	<h1 class="gold_text">{{ page.title }}</h1>
+            {{ page.content }}
+          {% endif %}
+
+
+        </div>
+
+    </div>
+</section>

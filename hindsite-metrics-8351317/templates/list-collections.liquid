@@ -3,38 +3,45 @@
 
     {% if collections.size > 0 %}
       {% for collection in collections %}
+        {% unless collection.handle == 'consultations' %}
+        {% unless collection.handle == 'the-complete-look' %}
+        {% unless collection.handle == 'the-fresh-face-look' %}
+        {% unless collection.handle == 'the-glamour-look' %}
+          {% if collection.image %}
 
-        {% if collection.image %}
+            {% comment %} This section is for /collections {% endcomment %}
+            <div class="gallery__slide{% if collection.all_products_count == 0 %}--lonely{% endif %} collection__cover--img">
+              <a href="{{ collection.url }}">
+                <img src="{{ collection.image.src | collection_img_url: 'master' }}" class="slide__image">
+                <div class="desk--table__contain">
+                  <div class="desk--table__inner align_top">
+                    <div class="collectioncover__text remove_padding">
+                      {% comment %} Comment is to remove the heading on top of the images, making the entire image redirect to collection.
+                        {% include 'collectioncoverlink' %}
+                      {% endcomment %}
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
 
-          {% comment %} This section is for /collections {% endcomment %}
-          <div class="gallery__slide{% if collection.all_products_count == 0 %}--lonely{% endif %} collection__cover--img">
-            <a href="{{ collection.url }}">
-              <img src="{{ collection.image.src | collection_img_url: 'master' }}" class="slide__image">
+          {% else %}
+            
+            <div class="gallery__slide collection__cover">
               <div class="desk--table__contain">
                 <div class="desk--table__inner align_top">
-                  <div class="collectioncover__text remove_padding">
-                    {% comment %} Comment is to remove the heading on top of the images, making the entire image redirect to collection.
-                      {% include 'collectioncoverlink' %}
-                    {% endcomment %}
+                  <div class="collectioncover__text">
+                    {% include 'collectioncoverlink' %}
                   </div>
                 </div>
               </div>
-            </a>
-          </div>
-
-        {% else %}
-          
-          <div class="gallery__slide collection__cover">
-            <div class="desk--table__contain">
-              <div class="desk--table__inner align_top">
-                <div class="collectioncover__text">
-                  {% include 'collectioncoverlink' %}
-                </div>
-              </div>
             </div>
-          </div>
 
-        {% endif %}
+          {% endif %}
+        {% endunless %}
+        {% endunless %}
+        {% endunless %}
+        {% endunless %}
       {% endfor %}
 
     {% else %}

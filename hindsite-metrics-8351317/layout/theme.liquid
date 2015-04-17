@@ -46,7 +46,7 @@
         {% endcomment %}
     </head>
 
-    <body class="template-{{ template }}">
+    <body class="template-{{ template }} {% if template == "page.shop" %} shop-gray-bg {% endif %}">
 
         <!--[if lt IE 8]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -236,13 +236,7 @@
             <div class="desk--floatLeft">
                 <div class="desk--table__contain">
                     <div class="desk--table__inner">
-                        <ul class="horizontal navfooter">
-                            {% comment %} footer contains a SEARCH and ABOUT US that is unneeded
-                            {% for link in linklists.footer.links %}
-                                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-                            {% endfor %}
-                            {% endcomment %}
-                        </ul>
+                        
                         {% if settings.facebook_url != "" or settings.twitter_url != "" or settings.instagram_url != "" or settings.pinterest_url != "" or settings.google_url != "" %}
                             <nav class="grid-full social">
                             {% if settings.social_display == "footer" %}
@@ -274,8 +268,13 @@
             <div class="desk--floatRight">
                 <div class="desk--table__contain">
                     <div class="desk--table__inner">
+                        <ul class="horizontal navfooter">
+                           {% for link in linklists.footer.links %}
+                                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                            {% endfor %}
+                        </ul>
                         {% comment %} <p class="copy">{{ powered_by_link }}. &copy; Copyright {{ shop.name }}</p> {% endcomment %}
-                        <p class="copy">design x hindsite</p>
+                        <p class="copy" style="color: black;">design x hindsite</p>
                     </div>
                 </div>
             </div>
@@ -435,9 +434,6 @@
         {% endif %}
         </script>
         {% endif %}
-        {% comment %}
-        {% include 'size-chart' %}
-        {% endcomment %}
     
 <input type="hidden" name="_pc_params" value="{{ shop.permanent_domain }}:{{ customer.id }}" />
 </body>

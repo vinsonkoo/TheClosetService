@@ -1,0 +1,71 @@
+<section class="gallery{% if settings.use_footer %} hasfooter{% endif %}">
+
+	<div class="gallery__slide collection__cover--img hiw-title">
+		<div class="desk--table__contain pos_rel">
+    	<div class="desk--table__inner align_middle">
+				<div class="collectioncover__text" style="margin-left:20px;">
+	        <h2 class="single gold_text">HOW IT WORKS</h2>
+	        <h3 style="border-bottom: none">You shouldn't have to experience a dress by only owning it. With The Closet Service, you have options.</h3>
+	        <h4>3 EASY STEPS</h4>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="hiw_gallery">
+		<div class="gallery__slide">
+			<div class="arrow_box">
+				{{ 'pc_user.png' | asset_url | img_tag: '', "slide__image" }}
+				<h4 class="text_center">RESERVE</h4>
+				<ul>
+					<li>Browse the selection of beautiful one-of-a-kind dresses.
+					</li>
+					<li>Choose the dress that you want for your night out.
+					</li>
+					<li>Select your dress size and the rental date.
+					</li>
+				</ul>
+				<p class="text_center">
+					<a href ="/pages/size-chart" class="gold_btn text_center">
+						Sizing Chart
+					</a>
+				</p>
+			</div>
+		</div>
+		<div class="gallery__slide">
+			<div class="arrow_box">
+				{{ 'party.png' | asset_url | img_tag: '', "slide__image" }}
+				<h4 class="text_center">RENT</h4>
+				<ul>
+					<li>Add the dress to your Garment Bag.
+					</li>
+					<li>Check out.
+					</li>
+					<li>Receive your dress by 8PM via UPS, on the 1st of the 3-day rental.
+					</li>
+				</ul>
+				<p class="text_center">
+					<a href ="/pages/rental-agreement-dress-rental" class="gold_btn text_center">
+						Rental Agreement
+					</a>
+				</p>
+			</div>
+		</div>
+		<div class="gallery__slide">
+				{{ 'return_shipping.png' | asset_url | img_tag: '', "slide__image" }}
+				<h4 class="text_center">RETURN</h4>
+				<ul>
+					<li>After your fabulous night out, return the rental in your prepaid envelope at your nearest <a href="https://www.ups.com/dropoff">UPS dropbox</a> on your return date.
+					</li>
+					<li>Become a <a href="/pages/our-closet">Closet Girl</a> by sending us a picture of you in your rental
+					</li>
+					<li>Don't worry about dry cleaning, we've got you covered.
+					</li>
+				</ul>
+				<p class="text_center">
+					<a href ="/pages/faqs-dress-rental" class="gold_btn text_center">
+						Frequently Asked Questions
+					</a>
+				</p>
+		</div>
+	</div>
+</section>

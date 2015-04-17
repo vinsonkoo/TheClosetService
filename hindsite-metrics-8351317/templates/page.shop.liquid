@@ -1,0 +1,22 @@
+<section class="page">
+    <div class="page__inner {% if page.title == 'buy' %} buy {% endif %}">
+ 
+        <div class="page__text{% if settings.use_footer %} hasfooter{% endif %} rte">
+  				
+          {% if page.title == "Buy" %}
+              
+
+            <h1 class="text_center">{{ page.title }}</h1>
+
+              {{ page.content }}
+
+  				{% else %}
+          	<h1 class="gold_text">{{ page.buy }}</h1>
+              {{ page.content }}
+          {% endif %}
+            {{ image_name: "closet_service_shop.png" | //cdn.shopify.com/s/files/1/0401/1709/t/4/assets/closet_service_shop.png?1912160531422311874  | image_tag: "buy from closet service" }}
+
+        </div>
+
+    </div>
+</section>

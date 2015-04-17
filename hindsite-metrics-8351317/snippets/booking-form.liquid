@@ -11,7 +11,7 @@ BookThatApp auto installed snippet. Changes made to this file will be lost if in
     {% comment %} Label unneeded because of placeholder 
     <label for="{{ attribute }}">Select Rental Date:</label>
     {% endcomment %}
-    <input id="{{ attribute }}" type="text" name="properties[{{ attribute }}]" class="datepicker bta required bta-load-enable" size="12" data-handle="{{ product.handle }}" data-variant="{{ product.variants.first.id}}" data-bta-product-config="{{ product.metafields.bookthatapp.config }}" data-bta-variant-config="{% for variant in product.variants %}{{ variant.id }}:{{ variant.metafields.bookthatapp.config }}{% unless forloop.last %},{% endunless %}{% endfor %}" disabled="disabled"  placeholder="Select Rental Date"/>
+    <input id="{{ attribute }}" type="text" name="properties[{{ attribute }}]" class="datepicker bta required bta-load-enable" size="12" data-handle="{{ product.handle }}" data-variant="{{ product.variants.first.id}}" data-bta-product-config="{{ product.metafields.bookthatapp.config }}" data-bta-variant-config="{% for variant in product.variants %}{{ variant.id }}:{{ variant.metafields.bookthatapp.config }}{% unless forloop.last %},{% endunless %}{% endfor %}" disabled="disabled" {% if collection.title == "Consultations" %} placeholder="Select Consultation Date" {% else %} placeholder="Select Rental Date" {% endif %}/>
 </div>
 </div>
 

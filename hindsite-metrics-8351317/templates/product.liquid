@@ -1,8 +1,10 @@
+{% comment %}
 <div class="grid--full">
   <div class="grid__item desk--hide breadcrumb breadcrumb--product">
     {% include 'breadcrumb' %}
   </div>
 </div>
+{% endcomment %}
 
 {% comment %}
   Gallery images
@@ -25,9 +27,20 @@
     </div>
     {% else %}     
       {% for image in product.images %}
-      <div class="gallery__slide">
-        <img src="{{ image.src | product_img_url: 'master' }}" alt="{{ image.alt | escape }}" class="slide__image">
-      </div>
+        {% comment %}
+          Conditionals for showing full size image for "buy" collection
+        {% endcomment %}
+        {% for c in product.collections %}
+          {% if c.handle == "buy-the-closet-service" %}
+            <div class="gallery__slide__full">
+              <img src="{{ image.src | product_img_url: 'master' }}" alt="{{ image.alt | escape }}" class="slide__image">
+            </div>
+          {% else %}
+            <div class="gallery__slide">
+              <img src="{{ image.src | product_img_url: 'master' }}" alt="{{ image.alt | escape }}" class="slide__image">
+            </div>
+          {% endif %}
+        {% endfor %}
       {% endfor %}
     {% endif %}    
   </div>
@@ -42,11 +55,13 @@
   <meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
   <meta itemprop="image" content="{{ product.featured_image.src | product_img_url: 'grande' }}" />
 
+  {% comment %}
   <div class="grid--full">
     <div class="grid__item palm--hide lap--hide desk--show breadcrumb">
       {% include 'breadcrumb' %}
     </div>
   </div>
+  {% endcomment %}
 
   <h1 itemprop="name" class="gold_text product_name">{{ product.title }}</h1>
   {% if product.vendor != shop.name %}
@@ -57,31 +72,54 @@
   {% assign variant = product.selected_or_first_available_variant %}
   <p class="price-field" itemprop="price"><strong>{{ variant.price | money }}</strong>{% if variant.price < variant.compare_at_price %} <del>{{ variant.compare_at_price | money }}</del>{% endif %}</p>
 
+
   {% if product.available %}
   
   <form action="/cart/add" method="post" class="product-form">
-    <div class="product-variants"{% if product.variants.size == 1 and product.variants.first.title contains 'Default' %} style="display: normal;"{% endif %}>
-      <h4>Choose Dress Size </h4>
-
-      <select id="product-select" name="id">
-        {% for variant in product.variants %}
-          <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
-        {% endfor %}
-      </select>
+    {% if product.type == "Consultation" %}
+      <div class="product-variants"{% if product.variants.size == 1 and product.variants.first.title contains 'Default' %} style="display: none;"{% endif %}>
+        <select id="product-select" name="id" style="display:none">
+          {% for variant in product.variants %}
+            <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+          {% endfor %}
+        </select>
+      </div>
       {% include 'booking-form' %}
+    {% else %}
+      <div class="product-variants"{% if product.variants.size == 1 and product.variants.first.title contains 'Default' %} style="display: normal;"{% endif %}>
+        {% for c in product.collections %}
+          {% if c.handle == "buy-the-closet-service" %}
+            <h4>Choose Color</h4>
+          {% else %}
+            <h4>Choose Dress Size</h4>
+          {% endif %}
+        {% endfor %}
+        <select id="product-select" name="id">
+          {% for variant in product.variants %}
+            <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+          {% endfor %}
+        </select>
+        {% include 'booking-form' %}
     </div>
+    {% endif %}
 
     <div class="grid--full form__qtyprice">
-      <div class="grid__item one-half">
-        <div class="form__qty">
-          <a class="qty__sub"><span class="icon__minus"></span></a>
-          <input type="text" class="qty__num" name="quantity" value="1" min="1" pattern="[0-9]*">
-          <a class="qty__add"><span class="icon__plus"></span></a>
-        </div>
-      </div>
-      <div class="grid__item one-half">
+      {% if product.type == "Consultation" %}
+        <div class="grid__item one-half push--one-quarter">
         <button type="submit" name="add" value="Add to Bag" class="btn__shoppingbag">Add to Bag</button>
       </div>
+      {% else %}
+        <div class="grid__item one-half">
+          <div class="form__qty">
+            <a class="qty__sub"><span class="icon__minus"></span></a>
+            <input type="text" class="qty__num" name="quantity" value="1" min="1" pattern="[0-9]*">
+            <a class="qty__add"><span class="icon__plus"></span></a>
+          </div>
+        </div>
+        <div class="grid__item one-half">
+          <button type="submit" name="add" value="Add to Bag" class="btn__shoppingbag">Add to Bag</button>
+        </div>
+      {% endif %}
     </div>
   </form>
   

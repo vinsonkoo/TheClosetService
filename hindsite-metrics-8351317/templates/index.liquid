@@ -55,13 +55,13 @@
         {% unless settings.rmv_covershp %}
           {% if collection.image %}
             <div class="gallery__slide{% if collection.all_products_count == 0 %}--lonely{% endif %} collection__cover--img">
-              
+
               {% comment %} This is for the home page collection listing. Collection image not needed. Rent Now button under collection title needed and there will be 4 images on the right {% endcomment %}
               <img src="{{ collection.image.src | collection_img_url: 'master' }}" class="slide__image">
               <div class="desk--table__contain">
                 <div class="desk--table__inner align_top align_right">
                   <div class="collectioncover__text remove_padding">
-                    
+
                     {% comment %} Name of Collection on home page {% endcomment %}
 
                     {% include 'collectioncoverlink' %}
@@ -113,26 +113,24 @@
               <div class="black_btn_container">
                 <a href ="/collections/new-arrivals" class="black_btn">Rent Now</a>
               </div>
-              <!-- <div class"gold_btn">Rent Now</div> -->
             </div>
           </div>
         </div>
       </div>
       <div class="gallery__slide">
-        {{ 'homepage_2465.jpg' | asset_url | img_tag: '', "slide__image" }}
+        {{ 'homepage_2465.jpg' | asset_url | img_tag: '', "slide__image" | link_to: 'https://www.shopify.com', '' }}
       </div>
       <div class="gallery__slide">
-        {{ 'homepage_2521.jpg' | asset_url | img_tag: '', "slide__image" }}
+        {{ 'homepage_2521.jpg' | asset_url | img_tag: '', "slide__image" | link_to: 'https://www.shopify.com', '' }}
       </div>
       <div class="gallery__slide">
-        {{ 'homepage_2602.jpg' | asset_url | img_tag: '', "slide__image" }}
+        {{ 'homepage_2602.jpg' | asset_url | img_tag: '', "slide__image" | link_to: 'https://www.shopify.com', '' }}
       </div>
       <div class="gallery__slide">
-        {{ 'homepage_2553.jpg' | asset_url | img_tag: '', "slide__image" }}
+        {{ 'homepage_2553.jpg' | asset_url | img_tag: '', "slide__image" | link_to: 'https://www.shopify.com', '' }}
       </div>
 
-      </div>
-      
+
 
 
     {% comment %}
@@ -141,29 +139,29 @@
         <div class="desk--table__inner">
           <div class="collectioncover__text">
             <div class="gallery__inner">
-              
+
             <h2 class="single">To add content to your homepage, visit your <a href="/admin/themes/{{ theme.id }}/settings">theme settings page</a>.</h2>
           </div>
         </div>
       </div>
     </div>
-    {% endcomment %}    
+    {% endcomment %}
     {% endunless %}
   </div>
 
 
   {% if shop.customer_accounts_enabled %}
     {% if customer %}
-      
+
     {% else %}
-      
+
     <div class="content_for_popin grid--full">
       {% layout settings.customer_layout %}
           <section class="page">
               <div class="page__inner">
                   <div class="page__text">
 
-                    <h1>SIGN UP FOR FREE MEMBERSHIP WITH <span class="gold_text">THE CLOSET SERVICE</span> AND RECEIVE 15% OFF YOUR FIRST RENTAL</h1>
+                    <h1>BECOME A <span class="gold_text">#CLOSETGIRL</span> AND RECEIVE 15% OFF YOUR FIRST RENTAL</h1>
 
                     {% form 'create_customer' %}
                       {{ form.errors | default_errors }}
@@ -230,7 +228,7 @@
       });
     </script>
 
-    
+
     {% endif %}
   {% endif %}
 
