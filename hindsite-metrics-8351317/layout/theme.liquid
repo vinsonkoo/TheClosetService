@@ -37,13 +37,16 @@
         <![endif]-->
 
 
-        
+
 
         <!-- Avgrund modal  ================================================== -->
         {{ 'avgrund.css' | asset_url | stylesheet_tag }}
         {{ 'jquery.avgrund.js' | asset_url | script_tag }}
         {% comment %} avgrund is causing weird horizontal scrolling. need to fix
         {% endcomment %}
+
+        <link href='http://fonts.googleapis.com/css?family=Amiri:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
+
     </head>
 
     <body class="template-{{ template }} {% if template == "page.shop" %} shop-gray-bg {% endif %}">
@@ -179,7 +182,10 @@
                                         </div>
                                     {% else %}
                                         <div class="user__loginregister">
+                                            {% comment %}
                                             <span class="icon__user"></span>
+                                            {% endcomment %}
+                                            {{ 'header_icon.png' | asset_url | img_tag: '', "header_icon" }}
                                             <a href="/account/login" class="userloginregister__link">Log in</a>
                                             {% if shop.customer_accounts_optional %}
                                                 or <a href="/account/register" class="userloginregister__link">Register</a>
@@ -236,7 +242,7 @@
             <div class="desk--floatLeft">
                 <div class="desk--table__contain">
                     <div class="desk--table__inner">
-                        
+
                         {% if settings.facebook_url != "" or settings.twitter_url != "" or settings.instagram_url != "" or settings.pinterest_url != "" or settings.google_url != "" %}
                             <nav class="grid-full social">
                             {% if settings.social_display == "footer" %}
@@ -434,7 +440,7 @@
         {% endif %}
         </script>
         {% endif %}
-    
+
 <input type="hidden" name="_pc_params" value="{{ shop.permanent_domain }}:{{ customer.id }}" />
 </body>
 </html>

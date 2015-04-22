@@ -7,6 +7,7 @@
         {% unless collection.handle == 'the-complete-look' %}
         {% unless collection.handle == 'the-fresh-face-look' %}
         {% unless collection.handle == 'the-glamour-look' %}
+        {% unless collection.handle == "buy-the-closet-service" %}
           {% if collection.image %}
 
             {% comment %} This section is for /collections {% endcomment %}
@@ -26,7 +27,7 @@
             </div>
 
           {% else %}
-            
+
             <div class="gallery__slide collection__cover">
               <div class="desk--table__contain">
                 <div class="desk--table__inner align_top">
@@ -38,6 +39,7 @@
             </div>
 
           {% endif %}
+        {% endunless %}
         {% endunless %}
         {% endunless %}
         {% endunless %}
